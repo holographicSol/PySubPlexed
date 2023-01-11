@@ -7,7 +7,7 @@ from threading import Thread
 
 
 def PySubPlexed(_data):
-    """ Provide something for PySubPlexed to compute and then destroy the daemons """
+    """ Provide something for PySubPlexed to compute """
 
     n_threads = int(len(_data))
     print(pysubplexed.spawn(n_threads, _data))
