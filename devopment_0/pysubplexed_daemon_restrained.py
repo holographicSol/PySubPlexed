@@ -1,7 +1,6 @@
 """ Written by Benjamin Jack Cullen
 Intention: This program runs as n subprocess(s) to do work for a program.
-           This subprocess should return values back to a program like a thread would but over ports.
-Summary: Multiplex via ports.
+Summary: PySubPlexed.
 """
 import sys
 
