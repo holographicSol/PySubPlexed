@@ -1,5 +1,6 @@
 """ Written by Benjamin Jack Cullen
-Intention: Example program using PySubPlexed. Summary. Use potentially all cores easily with PySubPlexed in one line.
+Intention: Example program using PySubPlexed. Summary. Use potentially all CPU cores easily
+with PySubPlexed in one line.
 """
 import pysubplexed
 
