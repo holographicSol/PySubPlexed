@@ -10,17 +10,17 @@ def PySubPlexed(_data):
     return pysubplexed.spawn(int(len(_data)), _data, restrained=False)
 
 
-def process_some_data(data, chunk_size):
+def process_some_data(_data, _chunk_size):
     """ A concise version of example 5 """
 
-    chunks = pysubplexed.chunk_data(data, chunk_size)
-    results = []
-    i_results = 0
+    chunks = pysubplexed.chunk_data(_data, _chunk_size)
+    _results = []
+    _i_results = 0
     for chunk in chunks:
         result = PySubPlexed(chunk)
-        results.append(result)
-        i_results += int(len(result))
-    print('Items in results:', i_results)
+        _results.append(result)
+        _i_results += int(len(result))
+    return _results, _i_results
 
 
 """ PySubPlex some imaginary data """
@@ -29,4 +29,5 @@ data = []
 for i in range(1, 65):
     _str = '10**' + str(i)
     data.append(_str)
-process_some_data(data=data, chunk_size=8)
+results, i_results = process_some_data(_data=data, _chunk_size=8)
+print('Items in Results:', i_results)
