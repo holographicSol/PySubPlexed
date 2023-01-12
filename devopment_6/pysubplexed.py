@@ -91,8 +91,13 @@ def spawn(n_thread, _data, restrained=False, tag=True):
     items in any given chunk are not aligned with the input expressions/data
     list.
     
-    If tag=False internal tagging will still occur for expression/result list
-    alignment.
+    If tag=False internal tagging will still occur internally for 
+    expression/result list alignment because one daemon could finnish before
+    any other given daemon in any given chunk. And list alignment is often 
+    important.
+    
+    Tagging may be completely disabled optionally in the future. Where certain
+    operations do not require list alignments.
     """
     multiplexed_results = []
     if tag is True:
