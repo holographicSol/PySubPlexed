@@ -64,7 +64,7 @@ def spawn(n_thread, _data, restrained=False):
         tag = str(multiplexed_result)[:idx]
         result = str(multiplexed_result)[idx:]
         format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
-    return res
+    return format_multiplexed_results
 
 
 def chunk_data(data, chunk_size):
