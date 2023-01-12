@@ -58,4 +58,11 @@ def spawn(n_thread, _data, restrained=False):
 
     """ Sort the results by IDs and return """
     multiplexed_results = sorted(res, key=lambda x: x[0])
-    return multiplexed_results
+    format_multiplexed_results = []
+    for multiplexed_result in multiplexed_results:
+        print('_'*10)
+        idx = str(multiplexed_result).find(' ')
+        tag = str(multiplexed_result)[:idx]
+        result = str(multiplexed_result)[idx:]
+        format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
+    return format_multiplexed_results
