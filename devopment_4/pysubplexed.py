@@ -16,6 +16,8 @@ procs = []
 
 
 def results(n=str):
+    """ Wait on n threads for results to come back in from real processes. """
+
     global procs, res
     cmd_output = []
     n = int(n)
@@ -27,13 +29,9 @@ def results(n=str):
             cmd_output.append(str(output.decode("utf-8").strip()))
         else:
             break
-
     rc = procs[n].poll()
     if cmd_output:
         res.append(cmd_output)
-    # else:
-    #     print('None cmd_output:', procs[n])
-    # print(res)
 
 
 def spawn(n_thread, _data, restrained=False):
@@ -50,7 +48,6 @@ def spawn(n_thread, _data, restrained=False):
     """ Spawn and instruct daemons """
     commands = []
     for n in range(0, n_thread):
-        # todo: change n key to unique for sorting
         cmd = PySubPlexCommand + str(n) + ' ' + str(_data[n])
         commands.append(cmd)
     procs = [subprocess.Popen(i, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for i in commands]
