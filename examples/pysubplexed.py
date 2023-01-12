@@ -56,7 +56,10 @@ def spawn(n_thread, _data, restrained=False):
         pass
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
-    return res
+    multiplexed_results = res
+    multiplexed_results = sorted(multiplexed_results, key=lambda x: x[0])
+
+    return multiplexed_results
 
 
 def chunk_data(data, chunk_size):
