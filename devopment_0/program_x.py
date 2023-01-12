@@ -1,17 +1,16 @@
 """ Written by Benjamin Jack Cullen
 Intention: Example program using PySubPlexed.
 """
-import time
 import pysubplexed
-from threading import Thread
 
 
 def PySubPlexed(_data):
-    """ Provide something for PySubPlexed to compute """
+    """ Provide something for PySubPlexed to compute... In one line. """
 
-    n_threads = int(len(_data))
-    print(pysubplexed.spawn(n_threads, _data))
+    return pysubplexed.spawn(int(len(_data)), _data)
 
 
-data = ['10**10000', '10**10000', '10**10000', '10**10000']
-PySubPlexed(data)
+print('Starting Program X: Using PySubPlexed to compute...')
+data = ['10**1', '10**2', '10**3', '10**4']
+results = PySubPlexed(data)
+print(results)
