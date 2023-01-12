@@ -60,7 +60,6 @@ def spawn(n_thread, _data, restrained=False):
     multiplexed_results = sorted(res, key=lambda x: x[0])
     format_multiplexed_results = []
     for multiplexed_result in multiplexed_results:
-        print('_'*10)
         idx = str(multiplexed_result).find(' ')
         tag = str(multiplexed_result)[:idx]
         result = str(multiplexed_result)[idx:]
