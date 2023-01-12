@@ -16,6 +16,8 @@ procs = []
 
 
 def results(n=str):
+    """ Wait on n threads for results to come back in from real processes. """
+
     global procs, res
     cmd_output = []
     n = int(n)
@@ -27,7 +29,6 @@ def results(n=str):
             cmd_output.append(str(output.decode("utf-8").strip()))
         else:
             break
-
     rc = procs[n].poll()
     if cmd_output:
         res.append(cmd_output)
