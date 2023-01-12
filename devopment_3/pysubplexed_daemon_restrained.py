@@ -4,10 +4,6 @@ Summary: PySubPlexed.
 """
 import sys
 
-""" Parse sys.argv for input arguments """
-tag = str(sys.argv[1])
-invocation = str(sys.argv[2])
-
 
 def eval_expression(input_string):
     """ Create a dictionary containing the names that you want to use with eval().
