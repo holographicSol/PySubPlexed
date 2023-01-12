@@ -95,8 +95,8 @@ def spawn(n_thread, _data, restrained=False, tag=True):
     expression/result list alignment because one daemon could finnish before
     any other given daemon in any given chunk. And list alignment is often 
     important.
-    Tag=False does not disable internal tagging, only results in a results list
-    that does not contain tags. For a one to one expressions list with results
+    Tag=False does not disable internal tagging, but only removes tags from
+    within a results list, for a one to one expressions list with results
     list without sub indexing the results list.
     
     Tagging may be completely disabled optionally in the future. Where certain
