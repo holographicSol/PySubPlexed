@@ -60,8 +60,16 @@ def spawn(n_thread, _data, restrained=False):
         pass
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
-    multiplexed_results = res
-    multiplexed_results = sorted(multiplexed_results, key=lambda x: x[0])
+    res = sorted(res, key=lambda x: x[0])
+
+    """ Data structure """
+    multiplexed_results = []
+    for r in res:
+        a = str(*r)
+        idx = str(a).find(' ')
+        b = str(a)[:idx]
+        c = str(a)[idx:]
+        multiplexed_results.append([b, c])
 
     return multiplexed_results
 
