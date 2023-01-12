@@ -15,17 +15,22 @@ def PySubPlexed(_data):
 
 
 print('Starting Program X: Using PySubPlexed to compute...')
-datas = []
-for i in range(0, 8):
-    datas.append('1024**' + str(i))
 
-chunks = [datas[x:x+4] for x in range(0, len(datas), 4)]
-datas = []
-for chunk in chunks:
-    datas.append(chunk)
+data = ['10*1', '10*2', '10*3', '10*4',
+        '10*5', '10*6', '10*7', '10*8']
 
+""" PySubPlexed can chunk data for you """
+chunks = pysubplexed.chunk_data(data, 4)
+
+""" Now we have two chunks of data we can pass one at a time into PySubPlexed daemon.
+Four items is the chunk size and we have eight items in data so this will mean two calls
+to PySubPlexed each call spawning 4 processes to run simultaniously.
+"""
+print('Chunks:', chunks)
+
+""" Lets pass each chunk into PySubPlexed """
 results = []
-for data in datas:
-    results.append(PySubPlexed(data))
-print('Items in results:', sum(len(data) for result in results))
+for chunk in chunks:
+    results.append(PySubPlexed(chunk))
 print('Results:', results)
+print('Items in results:', sum(len(chunk) for result in results))
