@@ -27,14 +27,20 @@ def results(n=str):
             cmd_output.append(str(output.decode("utf-8").strip()))
         else:
             break
-    res.append(cmd_output)
+
     rc = procs[n].poll()
+    if cmd_output:
+        res.append(cmd_output)
+    # else:
+    #     print('None cmd_output:', procs[n])
+    # print(res)
 
 
 def spawn(n_thread, _data, restrained=False):
     """ Starts n process(s) each with their ID and then spawns n threads to wait for the results come back in. """
 
-    global procs
+    global procs, res
+    res = []
 
     if restrained is False:
         PySubPlexCommand = 'python ./pysubplexed_daemon.py '
@@ -44,6 +50,7 @@ def spawn(n_thread, _data, restrained=False):
     """ Spawn and instruct daemons """
     commands = []
     for n in range(0, n_thread):
+        # todo: change n key to unique for sorting
         cmd = PySubPlexCommand + str(n) + ' ' + str(_data[n])
         commands.append(cmd)
     procs = [subprocess.Popen(i, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for i in commands]
@@ -57,7 +64,7 @@ def spawn(n_thread, _data, restrained=False):
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
     multiplexed_results = res
-    # multiplexed_results = sorted(multiplexed_results, key=lambda x:x[0])
+    multiplexed_results = sorted(multiplexed_results, key=lambda x: x[0])
 
     return multiplexed_results
 
