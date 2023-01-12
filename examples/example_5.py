@@ -29,6 +29,6 @@ for chunk in chunks:
     results.append(result)
     print('chunk result:    ', result)
 
-print('Items in results:', sum(len(chunk) for result in results))
 for _ in results:
     print(_)
+print('Items in results:', sum(len(chunk) for result in results))
