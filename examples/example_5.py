@@ -12,23 +12,27 @@ def PySubPlexed(_data):
 
 print('Starting Program X: Using PySubPlexed to compute...')
 
+""" This example demonstrates data structures and correct PySubPlexed usage """
+
+""" Create some data (64 items of data in a list) """
 data = []
 for i in range(1, 65):
     _str = '10**' + str(i)
     data.append(_str)
-print('Data:  ', data)
+print('Data Structure:  ', data)
 
-chunks = pysubplexed.chunk_data(data, 2)
-print('Chunks:', chunks)
+""" Chunk the data """
+chunks = pysubplexed.chunk_data(data, 8)
+print('Chunks Data Structure:', chunks)
 
-print('')
+""" Feed the chunks into PySubPlexed one by one """
 results = []
 i_results = 0
 for chunk in chunks:
-    print('processing chunk:', chunk)
+    print('Processing Chunk:', chunk)
     result = PySubPlexed(chunk)
     results.append(result)
     i_results += int(len(result))
-    print('chunk result:    ', result)
+    print('Chunk Result:    ', result)
 
 print('Items in results:', i_results)
