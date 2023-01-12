@@ -15,7 +15,7 @@ res = []
 procs = []
 
 
-def results(n=0):
+def results(n):
     global procs, res
 
     cmd_output = []
@@ -57,11 +57,11 @@ def spawn(n_thread, _data, restrained=False):
         pass
 
     """ Sort the results by IDs and return """
-    multiplexed_results = sorted(res, key=lambda x: x[0])
-    format_multiplexed_results = []
-    for multiplexed_result in multiplexed_results:
-        idx = str(multiplexed_result).find(' ')
-        tag = str(multiplexed_result)[:idx]
-        result = str(multiplexed_result)[idx:]
-        format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
-    return format_multiplexed_results
+    # multiplexed_results = sorted(res, key=lambda x: x[0])
+    # format_multiplexed_results = []
+    # for multiplexed_result in multiplexed_results:
+    #     idx = str(multiplexed_result).find(' ')
+    #     tag = str(multiplexed_result)[:idx]
+    #     result = str(multiplexed_result)[idx:]
+    #     format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
+    return res
