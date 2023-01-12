@@ -90,6 +90,9 @@ def spawn(n_thread, _data, restrained=False, tag=True):
     where in any given chunk the foo occurred and therefore what and how many
     items in any given chunk are not aligned with the input expressions/data
     list.
+    
+    If tag=False internal tagging will still occur for expression/result list
+    alignment.
     """
     multiplexed_results = []
     if tag is True:
