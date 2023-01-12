@@ -65,3 +65,15 @@ def spawn(n_thread, _data, restrained=False):
         result = str(multiplexed_result)[idx:]
         format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
     return format_multiplexed_results
+
+
+def chunk_data(data, chunk_size):
+    """ Break up lists into chunks of n and return as a single list of specified chunks """
+
+    chunks = [data[x:x + chunk_size] for x in range(0, len(data), chunk_size)]
+
+    data = []
+    for chunk in chunks:
+        data.append(chunk)
+
+    return data
