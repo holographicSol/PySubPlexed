@@ -15,11 +15,17 @@ def PySubPlexed(_data):
 
 
 print('Starting Program X: Using PySubPlexed to compute...')
-data = []
-for i in range(0, 64):
-    data.append('1024**' + str(i))
-chunks = [data[x:x+8] for x in range(0, len(data), 8)]
-results = []
+datas = []
+for i in range(0, 8):
+    datas.append('1024**' + str(i))
+
+chunks = [datas[x:x+4] for x in range(0, len(datas), 4)]
+datas = []
 for chunk in chunks:
-    results.append(PySubPlexed(chunk))
-print('Items in results:', sum(len(chunk) for chunk in chunks))
+    datas.append(chunk)
+
+results = []
+for data in datas:
+    results.append(PySubPlexed(data))
+print('Items in results:', sum(len(data) for result in results))
+print('Results:', results)
