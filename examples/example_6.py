@@ -10,9 +10,6 @@ def PySubPlexed(_data):
     return pysubplexed.spawn(int(len(_data)), _data, restrained=False)
 
 
-print('Starting Program X: Using PySubPlexed to compute...')
-
-
 def process_some_data(data, chunk_size):
     """ A concise version of example 5 """
 
@@ -27,6 +24,7 @@ def process_some_data(data, chunk_size):
 
 
 """ PySubPlex some imaginary data """
+print('Starting Program X: Using PySubPlexed to compute...')
 data = []
 for i in range(1, 65):
     _str = '10**' + str(i)
