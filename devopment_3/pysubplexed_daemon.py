@@ -14,7 +14,6 @@ for _ in sys.argv:
     if i > 1:
         invocation = invocation + _
     i += 1
-print(invocation, '')
 
 ev = ''
 try:
