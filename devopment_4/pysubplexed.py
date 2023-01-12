@@ -57,7 +57,7 @@ def spawn(n_thread, _data, restrained=False):
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
     multiplexed_results = res
-    multiplexed_results = sorted(multiplexed_results, key=lambda x: x[0])
+    # multiplexed_results = sorted(multiplexed_results, key=lambda x:x[0])
 
     return multiplexed_results
 
