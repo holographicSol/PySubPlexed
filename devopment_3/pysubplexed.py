@@ -15,9 +15,8 @@ res = []
 procs = []
 
 
-def results(n):
+def results(n=str):
     global procs, res
-
     cmd_output = []
     n = int(n)
     while True:
@@ -50,21 +49,14 @@ def spawn(n_thread, _data, restrained=False):
     procs = [subprocess.Popen(i, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for i in commands]
 
     """ Spawn threads and wait for results """
-    for i in range(0, n_thread):
-        thread = Thread(target=results, args=str(i))
+    for n in range(0, n_thread):
+        thread = Thread(target=results, args=str(n))
         thread.start()
     while len(res) < n_thread:
         pass
 
-    """ Sort the results by IDs and return """
-    multiplexed_results = sorted(res, key=lambda x: x[0])
-    format_multiplexed_results = []
-    for multiplexed_result in multiplexed_results:
-        idx = str(multiplexed_result).find(' ')
-        tag = str(multiplexed_result)[:idx]
-        result = str(multiplexed_result)[idx:]
-        format_multiplexed_results.append([tag.strip("['"), result.strip("']")])
-    return format_multiplexed_results
+    """ Sort the results by IDs and return (getting updated, return res as it is) """
+    return res
 
 
 def chunk_data(data, chunk_size):
