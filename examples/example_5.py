@@ -18,7 +18,7 @@ for i in range(1, 65):
     data.append(_str)
 print('Data:  ', data)
 
-chunks = pysubplexed.chunk_data(data, 2)
+chunks = pysubplexed.chunk_data(data, 3)
 print('Chunks:', chunks)
 
 print('')
@@ -29,6 +29,8 @@ for chunk in chunks:
     results.append(result)
     print('chunk result:    ', result)
 
+i_results = 0
 for _ in results:
     print(_)
-print('Items in results:', sum(len(chunk) for result in results))
+    i_results += int(len(_))
+print('Items in results:', i_results)
