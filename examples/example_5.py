@@ -18,19 +18,17 @@ for i in range(1, 65):
     data.append(_str)
 print('Data:  ', data)
 
-chunks = pysubplexed.chunk_data(data, 3)
+chunks = pysubplexed.chunk_data(data, 2)
 print('Chunks:', chunks)
 
 print('')
 results = []
+i_results = 0
 for chunk in chunks:
     print('processing chunk:', chunk)
     result = PySubPlexed(chunk)
     results.append(result)
+    i_results += int(len(result))
     print('chunk result:    ', result)
 
-i_results = 0
-for _ in results:
-    print(_)
-    i_results += int(len(_))
 print('Items in results:', i_results)
