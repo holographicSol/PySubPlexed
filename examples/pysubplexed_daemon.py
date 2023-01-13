@@ -7,11 +7,16 @@ import subprocess
 
 """ Parse sys.argv for input arguments """
 tag = str(sys.argv[1])
-invocation = str(sys.argv[2])
+invocation = ''
+i = 0
+for _ in sys.argv:
+    if i > 1:
+        invocation = invocation + _
+    i += 1
 
 ev = ''
 try:
     ev = eval(invocation)
-    print(tag, ev)
+    print(str(tag) + ' ' + str(ev))
 except Exception as e:
-    ev = str(tag, e)
+    ev = str(tag + ' ' + str(e))
