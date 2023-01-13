@@ -12,9 +12,9 @@ def PySubPlexed(_data):
     provide the correct results and data structure.
     Sampling is even more important if your expression(s) are variable and or with
     truly variable data.
-    You can say, okay I will always have these kinds of expression(s) with this kind
-    of data so lets sample so many cycles and test with a program to ensure everything
-    will always be correct using your particular expression and data combination.
+    You can say, okay I will always have these kinds of expression(s) so lets sample
+    so many cycles and test with a program to ensure everything will always be correct
+    using your particular expressions.
     """
     return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=True, sort=True)
 
