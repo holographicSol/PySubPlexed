@@ -8,7 +8,7 @@ def PySubPlexed(_data):
 
 def BenchPySubPlexed():
     """ Provide a sufficient workload to PySubPlexed to make it worth it. """
-    data = ['1024**10000000', '1024**10000000', '1024**10000000', '1024**10000000']
+    data = ['1024**100000000', '1024**100000000', '1024**100000000', '1024**100000000']
 
     t0 = time.perf_counter()
     chunk = pysubplexed.chunk_data(data, 4)
@@ -19,13 +19,13 @@ def BenchPySubPlexed():
 def BenchProceduralPy():
     t0 = time.perf_counter()
     results = []
-    x = eval('1024**10000000')
+    x = eval('1024**100000000')
     results.append(x)
-    y = eval('1024**10000000')
+    y = eval('1024**100000000')
     results.append(y)
-    z = eval('1024**10000000')
+    z = eval('1024**100000000')
     results.append(z)
-    a = eval('1024**10000000')
+    a = eval('1024**100000000')
     results.append(a)
     print('Time taken (Procedural Py):', time.perf_counter() - t0)
 
