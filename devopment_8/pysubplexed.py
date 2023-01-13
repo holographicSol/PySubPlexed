@@ -72,13 +72,13 @@ def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
             a = str(*r)
             idx = str(a).find(' ')
             b = str(a)[:idx]
-            c = str(a)[idx:]
+            c = str(a)[idx+1:]
             multiplexed_results.append([b, c])
     else:
         for r in res:
             a = str(*r)
             idx = str(a).find(' ')
-            c = str(a)[idx:]
+            c = str(a)[idx+1:]
             multiplexed_results.append(c)
 
     return multiplexed_results
