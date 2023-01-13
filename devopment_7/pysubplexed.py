@@ -134,8 +134,7 @@ def chunk_data(data, chunk_size):
 
 
 def unchunk_data(data):
-    """ Works with tag=False in spawn for one to one list alignment between
-    expression list and results list.
+    """ Un-chunk the data when and if required.
     """
 
     new_data = []
