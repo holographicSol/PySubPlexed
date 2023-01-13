@@ -1,6 +1,8 @@
 import time
 import pysubplexed
 
+evaluate_this = '1024**100'
+
 
 def PySubPlexed(_data):
     return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=False, sort=True)
@@ -9,7 +11,7 @@ def PySubPlexed(_data):
 def BenchPySubPlexed():
     """ Provide an insufficient workload to PySubPlexed and procedural Py should be faster. """
 
-    data = ['1024**1000', '1024**1000', '1024**1000', '1024**1000']
+    data = [evaluate_this, evaluate_this, evaluate_this, evaluate_this]
 
     t0 = time.perf_counter()
     chunk = pysubplexed.chunk_data(data, 4)
@@ -20,13 +22,13 @@ def BenchPySubPlexed():
 def BenchProceduralPy():
     t0 = time.perf_counter()
     results = []
-    x = eval('1024**1000')
+    x = eval(evaluate_this)
     results.append(x)
-    y = eval('1024**1000')
+    y = eval(evaluate_this)
     results.append(y)
-    z = eval('1024**1000')
+    z = eval(evaluate_this)
     results.append(z)
-    a = eval('1024**1000')
+    a = eval(evaluate_this)
     results.append(a)
     print('Time taken (Procedural Py):', time.perf_counter() - t0)
 
