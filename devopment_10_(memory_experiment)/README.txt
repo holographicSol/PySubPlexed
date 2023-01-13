@@ -7,8 +7,8 @@ Hypothesis:
 	by handing an address back from the daemon instead of the results?
 
 Answer:
-	Yes. However for many expressions it is still tough to beat procedural performance
-	in python in this way.
+	Yes. However for many expressions (like typical math) it is still tough to beat
+	procedural performance in python in this way.
 
 Conclusion:
 	PySubPlex some things, and not others for best performance.
