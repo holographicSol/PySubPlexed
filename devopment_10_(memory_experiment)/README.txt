@@ -1,9 +1,14 @@
 Written by Benjamin Jack Cullen.
 
-In this iteration of PyPortPlexed, there is an experiment.
+Optimization Experiment.
 
-Optimization Experiment: Intead of reading stdout would it be faster to pull
-results directly out of memory by handing an address back instead of results themselves.
+Hypothesis:
+	Intead of reading stdout would it be faster to pull results directly out of memory
+	by handing an address back from the daemon instead of the results?
 
-Yes. However for many expressions it is still tough to beat single threaded
-procedural performance.
+Answer:
+	Yes. However for many expressions it is still tough to beat procedural performance
+	in python in this way.
+
+Conclusion:
+	PySubPlex some things, and not others for best performance.
