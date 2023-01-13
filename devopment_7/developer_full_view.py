@@ -6,7 +6,7 @@ import pysubplexed
 def PySubPlexed(_data):
     """ Provide something for PySubPlexed to compute... In one line.
     """
-    return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=False)
+    return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=False, sort=True)
 
 
 print('Starting Program X: Using PySubPlexed to compute...')
@@ -16,7 +16,7 @@ print('Starting Program X: Using PySubPlexed to compute...')
 """ Create some data (n items of data in a list) """
 data = []
 for i in range(1, 33):
-    _str = str(i) + ' > 2'
+    _str = str(i) + '+1'
     data.append(_str)
 print('Data Structure:  ', data)
 

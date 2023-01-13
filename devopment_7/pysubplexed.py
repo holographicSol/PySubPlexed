@@ -34,7 +34,7 @@ def results(n=str):
         res.append(cmd_output)
 
 
-def spawn(n_thread, _data, restrained=False, tag=True):
+def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
     """ Starts n process(s) each with their ID and then spawns n threads to wait for the results come back in. """
 
     global procs, res
@@ -60,7 +60,8 @@ def spawn(n_thread, _data, restrained=False, tag=True):
         pass
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
-    res = sorted(res, key=lambda x: x[0])
+    if sort is True:
+        res = sorted(res, key=lambda x: x[0])
 
     """ Data structure
     List alignment and data structure.
