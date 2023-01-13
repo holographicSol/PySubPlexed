@@ -34,12 +34,14 @@ def results(n=str):
         res.append(cmd_output)
 
 
-def spawn(n_thread, _data, restrained=False):
+def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
     """ Starts n process(s) each with their ID and then spawns n threads to wait for the results come back in. """
 
     global procs, res
+    procs = []
     res = []
 
+    """ Use specified daemon """
     if restrained is False:
         PySubPlexCommand = 'python ./pysubplexed_daemon.py '
     elif restrained is True:
@@ -52,7 +54,7 @@ def spawn(n_thread, _data, restrained=False):
         commands.append(cmd)
     procs = [subprocess.Popen(i, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for i in commands]
 
-    """ Spawn threads and wait for results """
+    """ Spawn threads and wait for results back from daemons """
     for n in range(0, n_thread):
         thread = Thread(target=results, args=str(n))
         thread.start()
@@ -60,16 +62,24 @@ def spawn(n_thread, _data, restrained=False):
         pass
 
     """ Sort the results by IDs and return (getting updated, return res as it is) """
-    res = sorted(res, key=lambda x: x[0])
+    if sort is True:
+        res = sorted(res, key=lambda x: x[0])
 
-    """ Data structure """
+    """ Data structure return tagged/un-tagged results """
     multiplexed_results = []
-    for r in res:
-        a = str(*r)
-        idx = str(a).find(' ')
-        b = str(a)[:idx]
-        c = str(a)[idx:]
-        multiplexed_results.append([b, c])
+    if tag is True:
+        for r in res:
+            a = str(*r)
+            idx = str(a).find(' ')
+            b = str(a)[:idx]
+            c = str(a)[idx:]
+            multiplexed_results.append([b, c])
+    else:
+        for r in res:
+            a = str(*r)
+            idx = str(a).find(' ')
+            c = str(a)[idx:]
+            multiplexed_results.append(c)
 
     return multiplexed_results
 
@@ -84,3 +94,13 @@ def chunk_data(data, chunk_size):
         data.append(chunk)
 
     return data
+
+
+def unchunk_data(data):
+    """ Un-chunk the data when and if required. Requires tag=False during spawn(). """
+
+    new_data = []
+    for dat in data:
+        for x in dat:
+            new_data.append(x)
+    return new_data

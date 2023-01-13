@@ -1,17 +1,31 @@
 """ Written by Benjamin Jack Cullen
-Intention: Example program using PySubPlexed.
-Summary: Use potentially all CPU cores easily with PySubPlexed in one line.
-
-Things to remember:
-    1. Setting Daemon Count can be dangerous so stay within the logical limits of your hardware.
-       4 Cores, 8 threads = Set a max of 8 for n_thread (like below).
-    2. Restrain the daemons. Use only the daemon you need by setting restrained=True/False accordingly.
-    3. Consider eval() when passing lists/chunks of data to PySubPlexed because eval() is extremely powerful.
-
-"""
+Intention: Testing."""
 import pysubplexed
+
+
+def PySubPlexed(_data):
+    """ Provide something for PySubPlexed to compute... In one line.
+
+    Example return un-tagged results while still using internal tagging for order.
+    """
+
+    return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=False, sort=True)
+
 
 print('Starting Program X: Using PySubPlexed to compute...')
 
-print('Results:', len(pysubplexed.spawn(int(8), _data=['1024**100000', '1024**100000', '1024**100000', '1024**100000',
-                                                       '1024**100000', '1024**100000', '1024**100000', '1024**100000'])))
+data = ['1+1', '2+1', '3+1', '4+1']
+chunks = pysubplexed.chunk_data(data, 2)
+
+""" Feed the chunks into PySubPlexed one by one """
+results = []
+i_results = 0
+for chunk in chunks:
+    result = PySubPlexed(chunk)
+    results.append(result)
+    i_results += int(len(result))
+
+print('Items in results:', i_results)
+
+""" The data can then be un-chunked if desired """
+print(pysubplexed.unchunk_data(data=results))
