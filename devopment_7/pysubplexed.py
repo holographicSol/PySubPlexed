@@ -64,44 +64,6 @@ def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
         res = sorted(res, key=lambda x: x[0])
 
     """ Data structure
-    List alignment and data structure.
-    Results should unless where tagging is removed always be a list
-    of lists. One list of lists. Never a list of lists inside a list
-    for example. One list of lists.
-    Alignment. Results indexes should always be a one to one alignment
-    with expressions in. Regardless of sub-listing (used when tagging) where
-    the one to one alignment is one to one within a sub index.
-    
-    Tag=True: Useful to determine if your expression(s) list items will
-    always result in a one to one with results list. List alignment between
-    expression list and results list.
-    
-    Tag=False: Useful for a one to one expressions list with results list
-    without having to sub-index the results (no tags).
-    
-    Tag bool should be considered carefully. While tag=False assumes developer
-    is comfortable the data/expressions in will always align with the results
-    list by a one to one index.
-    
-    This module does a lot that can be avoided from being put in every program
-    but it cannot keep foo out of your expressions and data.
-    
-    Use tagging unless tagging is not required. If there is foo in your data
-    of foo in your expressions, variable or not, tagging can help you see
-    where in any given chunk the foo occurred and therefore what and how many
-    items in any given chunk are not aligned with the input expressions/data
-    list.
-    
-    If tag=False internal tagging will still occur internally for 
-    expression/result list alignment because one daemon could finnish before
-    any other given daemon in any given chunk. And list alignment is often 
-    important.
-    Tag=False does not disable internal tagging, but only removes tags from
-    within a results list, for a one to one expressions chunk list with results
-    chunk list without sub-sub indexing the results list.
-    
-    Tagging may be completely disabled optionally in the future. Where certain
-    operations do not require list alignments.
     """
     multiplexed_results = []
     if tag is True:
@@ -134,7 +96,7 @@ def chunk_data(data, chunk_size):
 
 
 def unchunk_data(data):
-    """ Un-chunk the data when and if required.
+    """ Un-chunk the data when and if required. Requires tag=False during spawn().
     """
 
     new_data = []
