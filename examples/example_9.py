@@ -14,7 +14,7 @@ def PySubPlexed(_data):
     index(zero) in the list. This is because one daemon could finnish before another and list alignment may be
     desired. PySubPlexed handles all of this when requested.
 
-    Tags are reset each chunk for tag efficiency, otherwise a tag could theoretically keep growing accross every chunk
+    Tags are reset each chunk for tag efficiency, otherwise a tag could theoretically keep growing across every chunk
     resulting in a huge tag. Undesirable as the tag in each chunk is already unique due to the chunk number
     containing the tag.
 
