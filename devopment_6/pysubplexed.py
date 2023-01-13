@@ -97,7 +97,7 @@ def spawn(n_thread, _data, restrained=False, tag=True):
     important.
     Tag=False does not disable internal tagging, but only removes tags from
     within a results list, for a one to one expressions chunk list with results
-    list without sub-sub indexing the results list.
+    chunk list without sub-sub indexing the results list.
     
     Tagging may be completely disabled optionally in the future. Where certain
     operations do not require list alignments.
