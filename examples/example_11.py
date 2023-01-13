@@ -10,7 +10,7 @@ def PySubPlexed(_data):
     Observe I/O with small sample sizes when providing PySubPlexed with expressions
     and data combinations to test if your required expression and data will always
     provide the correct results and data structure.
-    Sampling is even more important if your expression are variable and or with
+    Sampling is even more important if your expression(s) are variable and or with
     truly variable data.
     You can say, okay I will always have these kinds of expression(s) with this kind
     of data so lets sample so many cycles and test with a program to ensure everything
