@@ -96,8 +96,8 @@ def spawn(n_thread, _data, restrained=False, tag=True):
     any other given daemon in any given chunk. And list alignment is often 
     important.
     Tag=False does not disable internal tagging, but only removes tags from
-    within a results list, for a one to one expressions list with results
-    list without sub indexing the results list.
+    within a results list, for a one to one expressions chunk list with results
+    list without sub-sub indexing the results list.
     
     Tagging may be completely disabled optionally in the future. Where certain
     operations do not require list alignments.
