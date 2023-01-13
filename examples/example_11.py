@@ -1,17 +1,38 @@
 """ Written by Benjamin Jack Cullen
-Intention: Example program using PySubPlexed.
-Summary: Use potentially all CPU cores easily with PySubPlexed in one line.
-
-Things to remember:
-    1. Setting Daemon Count can be dangerous so stay within the logical limits of your hardware.
-       4 Cores, <=8 threads = Set a max of 8 for n_thread (like below).
-    2. Restrain the daemons. Use only the daemon you need by setting restrained=True/False accordingly.
-    3. Consider eval() when passing lists/chunks of data to PySubPlexed because eval() is extremely powerful.
-
-"""
+Intention: Testing."""
 import pysubplexed
+
+
+def PySubPlexed(_data):
+    """ Provide something for PySubPlexed to compute... In one line.
+    Data Structure again. Observe data structure when passing many chunks
+    to PySubPlexed.
+    """
+    return pysubplexed.spawn(int(len(_data)), _data, restrained=False, tag=True, sort=True)
+
 
 print('Starting Program X: Using PySubPlexed to compute...')
 
-print('Results:', len(pysubplexed.spawn(int(8), _data=['1024**500000', '1024**500000', '1024**500000', '1024**100000',
-                                                       '1024**500000', '1024**500000', '1024**500000', '1024**100000'])))
+""" Create some data (n items of data in a list) """
+data = []
+for i in range(0, 1024):
+    _str = str(i) + '+1'
+    data.append(_str)
+print('Data Structure:  ', data)
+
+""" Chunk the data """
+chunks = pysubplexed.chunk_data(data, 8)
+print('Chunks Data Structure:', chunks)
+
+""" Feed the chunks into PySubPlexed one by one """
+results = []
+i_results = 0
+for chunk in chunks:
+    print('Processing Chunk:', chunk)
+    result = PySubPlexed(chunk)
+    results.append(result)
+    i_results += int(len(result))
+    print('Chunk Result:    ', result)
+print('Results:')
+print(results)
+print('Items in results:', i_results)
