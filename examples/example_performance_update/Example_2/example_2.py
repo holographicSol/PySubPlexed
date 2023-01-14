@@ -56,7 +56,7 @@ BenchProceduralPy()
 
 """ This updated version of PySubPlexed:"""
 
-""" BenchPySubPlexed took me 2.3543013999878895 seconds on my machine """
+""" BenchPySubPlexed took me 1.8196121000073617 seconds on my machine """
 """ BenchProceduralPy took me 0.13421519999974407 seconds on my machine """
 
 """ For pure math like expressions PySubPlexed is not as fast as BenchProceduralPy and
