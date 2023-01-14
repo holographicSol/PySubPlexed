@@ -27,7 +27,7 @@ if allow_literals == 'False':
     invocation = ''
     i = 0
     for _ in sys.argv:
-        if i > 1:
+        if i > 2:
             invocation = invocation + _
         i += 1
     _eval(tag, invocation)
