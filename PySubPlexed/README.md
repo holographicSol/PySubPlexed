@@ -231,6 +231,14 @@ intention. Here is an example of using the restricted daemon:
     import pysubplexed
     pysubplexed.spawn(4, sum[1,2,3], restrained=True)
 
+And another example:
+
+    import pysubplexed
+    pysubplexed.spawn('"subprocess.getoutput(\'powershell ping 8.8.8.8\')"', restrained=True)
+
+
+PySubPlexed does not import the daemons, so restrained can be set to true and the daemon not needed safely discarded of
+and PySubPlexed can still be compiled/used with only the preferred daemon for task(s).
 
 Notes:
 
