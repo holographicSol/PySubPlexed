@@ -60,7 +60,7 @@ Chunks Example:
     print('Items in results:', sum(len(chunk) for result in results))
 
 
-Let's try something different, 2 default pings in half the time.
+Let's try something different, 2 default pings in half the time. This kind of thing is what PySubPlexed is great at.
 
 In this case 8 is the number of daemons that can run at a time and our chunk is a length of two (two commands).
 So this will spawn 2 daemons and ping in the time of one, with all the handling taken care of and all
