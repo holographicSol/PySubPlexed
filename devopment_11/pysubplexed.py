@@ -69,17 +69,19 @@ def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
     multiplexed_results = []
     if tag is True:
         for r in res:
-            a = str(*r)
-            idx = str(a).find(' ')
-            b = str(a)[:idx]
-            c = str(a)[idx+1:]
-            multiplexed_results.append([b, c])
+            for rs in r:
+                a = str(rs)
+                idx = str(a).find(' ')
+                b = str(a)[:idx]
+                c = str(a)[idx+1:]
+                multiplexed_results.append([b, c])
     else:
         for r in res:
-            a = str(*r)
-            idx = str(a).find(' ')
-            c = str(a)[idx+1:]
-            multiplexed_results.append(c)
+            for rs in r:
+                a = str(rs)
+                idx = str(a).find(' ')
+                c = str(a)[idx+1:]
+                multiplexed_results.append(c)
 
     return multiplexed_results
 
