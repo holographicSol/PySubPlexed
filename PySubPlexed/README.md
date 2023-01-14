@@ -7,6 +7,8 @@ variable, all in one line, keeping any given program that imports PySubPlexed cl
 
 Summary: Use potentially all CPU cores easily with PySubPlexed in one line to get things done faster.
 
+A less powerful version of PyPortPlexed, but faster and designed for running on a single machine. 
+
 Things to remember:
 
     1. Setting daemon count can be dangerous so stay within the logical limits of your hardware.
