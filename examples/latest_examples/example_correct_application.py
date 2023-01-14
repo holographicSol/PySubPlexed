@@ -19,7 +19,7 @@ def UsingPySubPlexed():
     PySubPlexed is not great or the best thing to use for normal math expressions for example, at least not yet. Such
     expressions could be performed faster in other ways.
 
-    Example application:
+    Example application of PysubPlexed module:
     For example 2 default pings in half the time or 8 in the time of 1, or 32 in the time of 3 which is massive time
     savings and handling for one line. This is how one should think about applying PySubPlexed, because all the
     handling is done and in one line everything comes back into one variable in order and tagged if specified.
