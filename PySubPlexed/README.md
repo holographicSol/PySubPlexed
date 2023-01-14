@@ -7,7 +7,8 @@ variable, all in one line, keeping any given program that imports PySubPlexed cl
 
 Summary: Use potentially all CPU cores easily with PySubPlexed in one line to get things done faster.
 
-A less powerful version of PyPortPlexed, but faster and designed for running on a single machine. 
+Description: A less powerful version of my PyPortPlexed module, but faster and designed for running on a single machine.
+
 
 Things to remember:
 
@@ -189,3 +190,43 @@ The UnChunking depth can be increased/decreased as needed for a one to one, if i
     
     """ The data can then be un-chunked if desired """
     print(pysubplexed.unchunk_data(data=results, depth=1))
+
+Literals. Literals can be passed through PySubPlexed, this can make many things even faster because the daemons can
+keep evaluating instead of restarting for each new evaluation:
+
+    import pysubplexed
+    
+    
+    def PySubPlexed(_data):
+        return pysubplexed.spawn(int(len(_data)), _data, restrained=False, allow_literals=True, tag=True, sort=True)
+    
+    
+    def LiteralsPySubPlexed():
+        """ In this example pss a bag of literals in to PySubPlexed.
+        """
+    
+        x = [1, 2, 3]
+        y = [4, 5, 6]
+        z = [7, 8, 9]
+    
+        data = ['1024**_literals ' + str(x), '1024**_literals ' + str(y), '1024**_literals ' + str(z)]
+    
+        chunks = pysubplexed.chunk_data(data, 8)
+        results = []
+        t0 = time.perf_counter()
+        for chunk in chunks:
+            result = PySubPlexed(chunk)
+            results.append(result)
+        print('Results:', results)
+        print('Time taken (PySubPlexed):  ', time.perf_counter() - t0)
+    
+    
+    LiteralsPySubPlexed()
+
+
+
+Notes:
+
+PySubPlexed makes many things faster in one line while keeping a program clean that imports PySubPlexed however pure
+math operations is not what PySubPlexed is great at despite efforts. Proper application of PySubPlexed can will yield
+infinitely faster results in one line.
