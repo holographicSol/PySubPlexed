@@ -238,7 +238,7 @@ And another example:
 
 
 PySubPlexed does not import the daemons, so restrained can be set to true and the daemon not needed safely discarded of
-and PySubPlexed can still be compiled/used with only the preferred daemon for a task(s).
+and PySubPlexed can still be compiled/used with only the preferred daemon for task(s).
 
 Notes:
 
