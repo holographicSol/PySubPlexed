@@ -224,6 +224,13 @@ keep evaluating instead of restarting for each new evaluation:
     LiteralsPySubPlexed()
 
 
+Using the restrained daemon. There are two daemons, one with unrestricted access to namespace and the other has
+tried to be contained which should have restricted/limited access to namespaces. Make no assumptions, this is the
+intention. Here is an example of using the restricted daemon:
+
+    import pysubplexed
+    pysubplexed.spawn(4, sum[1,2,3], restrained=True)
+
 
 Notes:
 
