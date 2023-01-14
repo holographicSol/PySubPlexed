@@ -7,7 +7,7 @@ def PySubPlexed(_data):
 
 
 def BenchPySubPlexed():
-    """ Compare this benchmark to example_benchmark.py in example_development_11. PySubPlexed
+    """ Compare this benchmark to example_benchmark.py in example_performance_update Example 2. PySubPlexed
     should be slower here. And BenchProceduralPy should win for this expression type.
 
     Create some data: ( (1024 ** 1000) * 500) * 8 ) = 4000 operations of 1024^1000.
