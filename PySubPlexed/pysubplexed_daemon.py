@@ -1,7 +1,7 @@
 """
 Author: Written and designed by Benjamin Jack Cullen.
 Module: PySubPlexed.
-Intention: This program runs as n subprocess(s) to do work for a program.
+Intention: This program runs as n subprocess(s) to do work as a real process for PySubPlexed.
 Version: Unrestricted namespace access for eval(). Use with caution.
 """
 import ast
