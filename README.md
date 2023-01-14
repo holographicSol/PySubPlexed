@@ -228,5 +228,5 @@ keep evaluating instead of restarting for each new evaluation:
 Notes:
 
 PySubPlexed makes many things faster in one line while keeping a program clean that imports PySubPlexed however pure
-math operations is not what PySubPlexed is great at despite efforts. Proper application of PySubPlexed can will yield
-infinitely faster results in one line.
+math operations is not what PySubPlexed is great at despite efforts. Proper application of PySubPlexed can and will
+yield infinitely faster results in one line.
