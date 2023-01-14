@@ -13,7 +13,7 @@ def BenchPySubPlexed():
     of PySubPlexed extremely faster than previous versions for pure math like expressions (but still not
     faster than procedural py for pure math expressions because of stdout time).
 
-    Running this benchmark and the example_benchmark.py in example_performance_update Example 1 should illustrate the performance
+    Running this benchmark and the example_2.py in example_performance_update Example 1 should illustrate the performance
     increase in the latest developments of PySubPlexed.
 
     Create some data: ( (1024 ** 1000) * 500) * 8 ) = 4000 operations of 1024^1000.
