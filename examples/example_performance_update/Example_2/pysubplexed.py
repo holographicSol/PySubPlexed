@@ -66,22 +66,24 @@ def spawn(n_thread, _data, restrained=False, tag=True, sort=True):
         res = sorted(res, key=lambda x: x[0])
 
     """ Data structure return tagged/un-tagged results """
-    # multiplexed_results = []
-    # if tag is True:
-    #     for r in res:
-    #         a = str(*r)
-    #         idx = str(a).find(' ')
-    #         b = str(a)[:idx]
-    #         c = str(a)[idx+1:]
-    #         multiplexed_results.append([b, c])
-    # else:
-    #     for r in res:
-    #         a = str(*r)
-    #         idx = str(a).find(' ')
-    #         c = str(a)[idx+1:]
-    #         multiplexed_results.append(c)
+    multiplexed_results = []
+    if tag is True:
+        for r in res:
+            for rs in r:
+                a = str(rs)
+                idx = str(a).find(' ')
+                b = str(a)[:idx]
+                c = str(a)[idx+1:]
+                multiplexed_results.append([b, c])
+    else:
+        for r in res:
+            for rs in r:
+                a = str(rs)
+                idx = str(a).find(' ')
+                c = str(a)[idx+1:]
+                multiplexed_results.append(c)
 
-    return res
+    return multiplexed_results
 
 
 def chunk_data(data, chunk_size):
