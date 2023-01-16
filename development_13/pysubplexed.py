@@ -86,6 +86,7 @@ def spawn(n_thread, _data, restrained=False, allow_literals=False, _exec=False, 
         res = sorted(res, key=lambda x: x[0])
 
     """ Data structure. Make tagged/un-tagged results """
+
     if _exec is False:
         multiplexed_results = []
         if tag is True:
