@@ -34,7 +34,7 @@ def results(n=str):
         res.append(cmd_output)
 
 
-def spawn(n_thread, _data, restrained=False, allow_literals=False, tag=True, sort=True):
+def spawn(n_thread, _data, restrained=False, allow_literals=False, _exec=False, tag=True, sort=True):
     """ Starts n process(s) each with their ID and then spawns n threads to wait for the results to come back in.
     N_Thread: Number of daemons to run simultaniously. int()
 
@@ -70,7 +70,7 @@ def spawn(n_thread, _data, restrained=False, allow_literals=False, tag=True, sor
     """ Spawn and instruct the daemons """
     commands = []
     for n in range(0, n_thread):
-        cmd = PySubPlexCommand + str(n) + ' ' + str(allow_literals) + ' ' + str(_data[n])
+        cmd = PySubPlexCommand + str(n) + ' ' + str(allow_literals) + ' ' + str(_exec) + ' ' + str(_data[n])
         commands.append(cmd)
     procs = [subprocess.Popen(i, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for i in commands]
 
@@ -86,22 +86,26 @@ def spawn(n_thread, _data, restrained=False, allow_literals=False, tag=True, sor
         res = sorted(res, key=lambda x: x[0])
 
     """ Data structure. Make tagged/un-tagged results """
-    multiplexed_results = []
-    if tag is True:
-        for r in res:
-            for rs in r:
-                a = str(rs)
-                idx = str(a).find(' ')
-                b = str(a)[:idx]
-                c = str(a)[idx+1:]
-                multiplexed_results.append([b, c])
-    else:
-        for r in res:
-            for rs in r:
-                a = str(rs)
-                idx = str(a).find(' ')
-                c = str(a)[idx+1:]
-                multiplexed_results.append(c)
+
+    if _exec is False:
+        multiplexed_results = []
+        if tag is True:
+            for r in res:
+                for rs in r:
+                    a = str(rs)
+                    idx = str(a).find(' ')
+                    b = str(a)[:idx]
+                    c = str(a)[idx+1:]
+                    multiplexed_results.append([b, c])
+        else:
+            for r in res:
+                for rs in r:
+                    a = str(rs)
+                    idx = str(a).find(' ')
+                    c = str(a)[idx+1:]
+                    multiplexed_results.append(c)
+    elif _exec is True:
+        multiplexed_results = res
 
     return multiplexed_results
 
