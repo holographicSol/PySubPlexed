@@ -224,6 +224,42 @@ keep evaluating instead of restarting for each new evaluation:
     LiteralsPySubPlexed()
 
 
+Exec(). Functions can be PySubPlexed too so that functions can run in parallel in one line and again with all the
+handling PySubPlexed provides. Here is a simple example:
+
+    import time
+    import pysubplexed
+    
+    
+    def PySubPlexed(_data):
+        return pysubplexed.spawn(int(len(_data)), _data, restrained=False, allow_literals=False, _exec=True, tag=True, sort=True)
+    
+    
+    def UsingExec():
+        """
+        In this example lets PySubPlex functions (parallel functions) using exec() in the daemon(s).
+        Setting _exec=True will force the daemon(s) to use exec(), while in contrast if _exec=False then the daemon(s)
+        will use eval().
+    
+        """
+
+        data = ['"[print(\'my excellent foobar\') for i in range(0, 3)]"',
+                '"[print(\'my excellent foobar\') for i in range(0, 3)]"']
+        chunks = pysubplexed.chunk_data(data, 8)
+        print('Starting Program X: Using PySubPlexed to compute...')
+        results = []
+        for chunk in chunks:
+            result = PySubPlexed(chunk)
+            results.append(result)
+        un_chunked_data = pysubplexed.unchunk_data(data=results, depth=1)
+        for _ in un_chunked_data:
+            print(_)
+    
+    
+    UsingExec()
+
+
+
 Using the restrained daemon. There are two daemons, one with unrestricted access to namespace and the other has
 tried to be contained which should have restricted/limited access to namespaces. Make no assumptions, this is the
 intention. Here is an example of using the restricted daemon:
