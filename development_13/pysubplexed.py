@@ -49,9 +49,6 @@ def spawn(n_thread, _data, restrained=False, allow_literals=False, _exec=False, 
     Allow_literals = True : _data = ['1024*_literals '+ x, '1024*_literals '+ y, '1024*_literals ' + z] where x, y, z
     are type str() of list(s), for example: x = str([100, 200, 300]).
 
-    Exec: True : Calls exec().
-    Exec: False : Calls eval().
-
     Tag: Keeps results tagged on the way out of PySubPlexed. bool()
 
     Sort: Useful because one daemon could finnish before another. Intends to structure results in accordance with
