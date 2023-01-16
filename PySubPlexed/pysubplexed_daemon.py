@@ -2,7 +2,7 @@
 Author: Written and designed by Benjamin Jack Cullen.
 Module: PySubPlexed.
 Intention: This program runs as n subprocess(s) to do work as a real process for PySubPlexed.
-Version: Unrestricted namespace access for eval(). Use with caution.
+Version: Unrestricted namespace access for eval() and exec() Use with caution.
 """
 import ast
 import sys
